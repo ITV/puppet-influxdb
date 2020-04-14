@@ -32,10 +32,10 @@ Puppet::Type.type(:influxdb_database).provide(:ruby) do
 
   def flush
     if @property_flush[:ensure] == :absent
-        influx_cli(['-execute', "drop database #{resource[:name]}"].compact)
+        influx_cli(['-execute', "drop database \"#{resource[:name]}\""].compact)
         return
     end
-    influx_cli(['-execute', "create database #{resource[:name]}"].compact)
+    influx_cli(['-execute', "create database \"#{resource[:name]}\""].compact)
   end
 
   def exists?
